@@ -43,13 +43,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
+        Intent intent;
         switch (item.getItemId()){
             case R.id.action_sign_out:
                 FirebaseAuth.getInstance().signOut();
                 return true;
             case R.id.action_account_settings:
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_chat:
+                intent = new Intent(MainActivity.this, ChatActivity.class);
                 startActivity(intent);
                 return true;
             default:

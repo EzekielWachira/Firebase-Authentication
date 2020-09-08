@@ -87,7 +87,7 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/common_full_open_on_phone"/>
+                        android:src="@drawable/ic_baseline_local_phone_24"/>
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:layout_width="match_parent"
@@ -102,14 +102,100 @@
                         android:imeOptions="actionNext"/>
 
                 </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/relLayout3"
+                    android:id="@+id/relLayout4"
+                     android:background="@drawable/grey_btn_top">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_email"
+                         />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/input_email"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="40dp"
+                        android:background="@null"
+                        android:inputType="textEmailAddress"
+                        android:hint="@string/email"
+                        android:textColor="@color/Black"
+                        android:imeOptions="actionNext"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/relLayout4"
+                    android:background="@drawable/grey_btn_top"
+                    android:id="@+id/relLayout5"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_password"/>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/input_password"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="40dp"
+                        android:background="@null"
+                        android:inputType="textPassword"
+                        android:hint="@string/confirm_password"
+                        android:textColor="@color/Black"
+                        android:imeOptions="actionDone"/>
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_save"
+                    android:layout_marginTop="35dp"
+                    android:layout_below="@id/relLayout5"
+                    android:text="@string/save"
+                    android:background="@drawable/blue_button"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/change_password"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/change_password"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/linkBlue"
+                    android:layout_below="@id/btn_save"
+                    android:layout_centerHorizontal="true"/>
+
             </RelativeLayout>
-
-
-
-
 
         </RelativeLayout>
 
     </ScrollView>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,10 +15,12 @@ import android.widget.Toast;
 
 import com.ezzy.firebaseauthentication.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -77,15 +79,34 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.d(TAG, "onComplete: AuthState: " + FirebaseAuth.getInstance().getCurrentUser().getUid());
                             makeToast(getResources().getString(R.string.user_creation_success));
                             sendVerificationEmail();
-                            redirectToLoginScreen();
+//                            redirectToLoginScreen();
 
-//                            User user = new User();
-//
-//                            user.setName(email.substring(0, email.indexOf("@")));
-//                            user.setPhone("1");
-//                            user.setProfile_image("");
-//                            user.setSecurity_level("1");
-//                            user.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            User user = new User();
+
+                            user.setName(email.substring(0, email.indexOf("@")));
+                            user.setPhone("1");
+                            user.setProfile_image("");
+                            user.setSecurity_level("1");
+                            user.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+                            FirebaseDatabase.getInstance().getReference()
+                                    .child(getResources().getString(R.string.dbnode_users))
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            FirebaseAuth.getInstance().signOut();
+                                            redirectToLoginScreen();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    FirebaseAuth.getInstance().signOut();
+                                    redirectToLoginScreen();
+                                    makeToast("Something went wrong");
+                                }
+                            });
 
                         }else {
                             makeToast(getResources().getString(R.string.registration_error));

@@ -169,4 +169,10 @@
     <string name="assignee">Assignee</string>
     <string name="issue_type">Issue Type</string>
     <string name="name">First and lastname</string>
+    <string name="choose_photo">Choose photo from memory</string>
+    <string name="take_photo">Take a photo from camera</string>
+    <string name="leave_chatroom">Leave</string>
+    <string name="action_delete_chatroom">Are you sure you want to delete this chatroom?</string>
+    <string name="chatroom_name">Chatroom name</string>
+    <string name="type_hint">type your message</string>
 </resources>
